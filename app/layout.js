@@ -2,6 +2,7 @@ import { HeadManagerContext } from "next/dist/server/future/route-modules/app-pa
 import "./globals.css";
 import Header from "@/components/Header";
  import {Inter} from "next/font/google"
+import { ClerkProvider } from "@clerk/nextjs";
 
 export const metadata = {
   title: "Create Next App",
@@ -11,6 +12,7 @@ const inter = Inter({subsets: ["latin"]});
 
 export default function RootLayout({ children }) {
   return (
+    <ClerkProvider>
     <html lang="en">
       <body
         className={inter.className}
@@ -26,5 +28,6 @@ export default function RootLayout({ children }) {
         </footer>
       </body>
     </html>
+    </ClerkProvider>
   );
 }
