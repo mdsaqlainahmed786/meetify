@@ -98,7 +98,7 @@ export default function Home() {
   ))}
    </div>
    {/* Start for free */}
-   <div className='flex flex-col space-y-4 px-12 py-10 mb-16 w-full justify-center items-center mx-auto max-w-[90vw] bg-blue-600 mt-40 rounded-lg'>
+   <div className='flex flex-col space-y-4 px-12 py-10 mb-16 w-full justify-center items-center mx-auto max-w-[90vw] bg-gradient-to-r from-blue-600 to-blue-400 mt-40 rounded-lg'>
     <p className='text-white font-extrabold text-3xl text-center'>
     Ready to Simplify Your Scheduling?
     </p>

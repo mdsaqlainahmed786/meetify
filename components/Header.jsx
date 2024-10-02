@@ -5,8 +5,10 @@ import { PenBox } from 'lucide-react';
 import { SignedOut } from '@clerk/nextjs';
 import { SignInButton } from '@clerk/nextjs';
 import { SignedIn } from '@clerk/nextjs';
+import { checkUser } from '../lib/checkUser';
 import UserMenu from './UserMenu';
-function Header() {
+async function Header() {
+  await checkUser();
   return (
     <div className='w-full border-b-2 shadow-lg'>
     <div className='flex justify-between items-center mx-auto w-full max-w-[80vw] py-4 lg:max-w-[90vw]'>
