@@ -1,6 +1,6 @@
-import { HeadManagerContext } from "next/dist/server/future/route-modules/app-page/vendored/contexts/entrypoints";
 import "./globals.css";
-import Header from "@/components/Header";
+import Header from "../components/Header";
+import FooterComp from "../components/FooterComp";
  import {Inter} from "next/font/google"
 import { ClerkProvider } from "@clerk/nextjs";
 
@@ -21,11 +21,12 @@ export default function RootLayout({ children }) {
       <main className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
         {children}
       </main>
-        <footer className="bg-blue-100 w-full py-12">
+        {/* <footer className="bg-blue-100 w-full py-12">
           <div className="container mx-auto text-center text-gray-600">
             <p>Made by MD Saqlian Ahmed</p>
           </div>
-        </footer>
+        </footer> */}
+        <FooterComp/>
       </body>
     </html>
     </ClerkProvider>

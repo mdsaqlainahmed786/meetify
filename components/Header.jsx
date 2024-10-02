@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from './ui/button'
 import Link from 'next/link'
 import { PenBox } from 'lucide-react';
-import { SignedOut, UserButton } from '@clerk/nextjs';
+import { SignedOut } from '@clerk/nextjs';
 import { SignInButton } from '@clerk/nextjs';
 import { SignedIn } from '@clerk/nextjs';
 import UserMenu from './UserMenu';
