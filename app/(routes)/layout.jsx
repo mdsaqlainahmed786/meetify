@@ -46,7 +46,7 @@ const AppLayout = ({ children }) => {
           </div>
         </nav>
       </aside>
-      <main className="lg:flex-grow lg:ml-64 lg:p-10 mt-20 lg:mt-10">
+      <main className="lg:flex-grow lg:ml-64 lg:p-10 mt-16 lg:mt-10">
         {children}
       </main>
     </div>
