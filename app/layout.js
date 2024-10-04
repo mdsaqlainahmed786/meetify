@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import FooterComp from "../components/FooterComp";
 import { Inter } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
+import EventDropdown from "../components/EventDropdown";
 
 export const metadata = {
   title: "Create Next App",
@@ -12,6 +13,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({ children }) {
   return (
+    
     <ClerkProvider>
       <html lang="en">
         <body className={inter.className}>
@@ -25,6 +27,7 @@ export default function RootLayout({ children }) {
           </div>
         </footer> */}
           <FooterComp />
+          <EventDropdown />
         </body>
       </html>
     </ClerkProvider>

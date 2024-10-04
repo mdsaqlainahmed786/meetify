@@ -1,3 +1,4 @@
+"use client";
 export default function Events() {
   return (
     <div className="w-full lg:w-[80%] lg:p-5">

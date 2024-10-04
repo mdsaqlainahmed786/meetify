@@ -2,6 +2,8 @@
 import { useUser } from "@clerk/nextjs";
 import { Input } from "../../../components/ui/input";
 import { Button } from "../../../components/ui/button";
+import useFetch from "../../../hooks/use-fetch";
+import { Toaster } from "react-hot-toast";
 import {
   Card,
   CardContent,
@@ -11,7 +13,11 @@ import {
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { updateUsername } from "../../../actions/users";
 import { useEffect } from "react";
+import { BarLoader } from "react-spinners";
+import toast from "react-hot-toast";
+
 export default function Dashboard() {
   const { isLoader, user } = useUser();
   const userSchema = z.object({
@@ -21,13 +27,54 @@ export default function Dashboard() {
       .max(20)
       .regex(/^[a-zA-Z0-9_]+$/),
   });
-  useEffect(()=>{
-    setValue("username", user?.username)
-  },[isLoader, user])
-  const { register, handleSubmit, setValue, formState:{errors}} = useForm({
+
+  useEffect(() => {
+    setValue("username", user?.username);
+  }, [isLoader, user]);
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm({
     resolver: zodResolver(userSchema),
   });
-  const onSubmit = async (data) => {};
+
+  const { loading, error, fn: fnupdateUsername } = useFetch(updateUsername);
+
+  const onSubmit = async (data) => {
+    try {
+      const result = await fnupdateUsername(data.username);
+
+      toast.success("Username updated successfully", {
+        style: {
+          border: "1px solid black",
+          padding: "16px",
+          color: "black",
+          marginTop: "75px",
+        },
+        iconTheme: {
+          primary: "blue",
+          secondary: "white",
+        },
+      });
+    } catch (err) {
+      toast.error(err.message || "Failed to update username", {
+        style: {
+          border: "1px solid black",
+          padding: "16px",
+          color: "red",
+          marginTop: "75px",
+        },
+        iconTheme: {
+          primary: "red",
+          secondary: "white",
+        },
+      });
+    }
+  };
+
   return (
     <div className="w-full space-y-5 lg:w-[80%] lg:p-5">
       <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 text-center pt-5 lg:text-6xl lg:text-left">
@@ -45,14 +92,36 @@ export default function Dashboard() {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className={`flex flex-col space-y-8 ${errors.username?"space-y-2":""}`}>
+            <div
+              className={`flex flex-col space-y-8 ${
+                errors.username ? "space-y-2" : ""
+              }`}
+            >
               <div className="flex justify-center items-center gap-2">
-                <span>{window?.location.origin}</span>
+                <span>
+                  {typeof window !== "undefined" ? window.location.origin : ""}
+                </span>
                 <Input {...register("username")} placeholder="username" />
               </div>
-              {errors.username && (<span className="text-red-500 text-sm">
-                {errors.username?.message}</span>)}
-              <Button className="flex justify-start w-[9rem] items-center" type="submit">Update username</Button>
+              {errors.username && (
+                <span className="text-red-500 text-sm">
+                  {errors.username?.message}
+                </span>
+              )}
+              {error && (
+                <span className="text-red-500 text-sm">{error?.message}</span>
+              )}
+              {loading && (
+                <BarLoader className="mb-4" width={"100%"} color="#36d7b7" />
+              )}
+              <Toaster position="top-right" reverseOrder={false} />
+              <Button
+                className="flex justify-start w-[9rem] items-center"
+                type="submit"
+                disabled={loading}
+              >
+                Update username
+              </Button>
             </div>
           </form>
         </CardContent>
