@@ -1,26 +1,35 @@
 "use client";
-import React from 'react'
-import { UserButton } from '@clerk/nextjs'
-import { ChartNoAxesGantt } from 'lucide-react'
-function UserMenu() {
-  return (
-    <UserButton 
-        appearance={{
-            elements:{
-                avatarBox:"w-10 h-10",
-            }
-        }}
-    >
-        <UserButton.MenuItems>
-            <UserButton.Link
-            label="My Events"
-            labelIcon={<ChartNoAxesGantt/>}
-            href='/events'
-            />
-            <UserButton.Action label='manageAccount'/>
-        </UserButton.MenuItems>
-    </UserButton>
-  )
-}
 
-export default UserMenu
+import { UserButton } from "@clerk/nextjs";
+import { ChartNoAxesGantt } from "lucide-react";
+import { useEffect, useState } from "react";
+
+const UserMenu = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+  if (!isLoaded) {
+    return null;
+  }
+  return (
+    <UserButton
+      appearance={{
+        elements: {
+          avatarBox: "w-10 h-10",
+        },
+      }}
+    >
+      <UserButton.MenuItems>
+        <UserButton.Link
+          label="My Events"
+          labelIcon={<ChartNoAxesGantt size={15} />}
+          href="/events"
+        />
+        <UserButton.Action label="manageAccount" />
+      </UserButton.MenuItems>
+    </UserButton>
+  );
+};
+
+export default UserMenu;

@@ -3,6 +3,8 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import EventForm from "../components/EventForm";
+import toast from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import { Button } from "../components/ui/button";
 import {
   Drawer,
@@ -18,6 +20,7 @@ export default function EventDropdown() {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
   const SearchParams = useSearchParams();
+
   useEffect(() => {
     const create = SearchParams.get("create");
     if (create) {
@@ -29,19 +32,31 @@ export default function EventDropdown() {
     setIsOpen(false);
     if (SearchParams.get("create") === "true") {
       router.replace(window?.location.pathname);
+      toast.success("Event created successfully", {
+        style: {
+          border: "1px solid black",
+          padding: "16px",
+          color: "black",
+          marginTop: "75px",
+        },
+        iconTheme: {
+          primary: "blue",
+          secondary: "white",
+        },
+      });
     }
   };
 
   return (
     <Drawer open={isOpen} handleOpen={handleOpen}>
+           {/* <Toaster position="top-right" reverseOrder={false} /> */}
       <DrawerContent>
         <DrawerHeader>
           <DrawerTitle>Create New Event</DrawerTitle>
           <DrawerDescription>
             <EventForm
-              onSubmitForm={() => {
-                handleOpen;
-              }}
+              onSubmitForm={handleOpen} // Call handleOpen on successful form submission
+              setIsOpen={setIsOpen}
             />
           </DrawerDescription>
         </DrawerHeader>

@@ -14,7 +14,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { updateUsername } from "../../../actions/users";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { BarLoader } from "react-spinners";
 import toast from "react-hot-toast";
 
@@ -31,6 +31,7 @@ export default function Dashboard() {
   useEffect(() => {
     setValue("username", user?.username);
   }, [isLoader, user]);
+  
 
   const {
     register,
@@ -42,6 +43,13 @@ export default function Dashboard() {
   });
 
   const { loading, error, fn: fnupdateUsername } = useFetch(updateUsername);
+  const [isLoaded, setIsLoaded] = useState(false);
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+  if (!isLoaded) {
+    return null;
+  }
 
   const onSubmit = async (data) => {
     try {

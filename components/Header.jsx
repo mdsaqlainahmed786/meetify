@@ -10,7 +10,7 @@ import UserMenu from "./UserMenu";
 async function Header() {
   await checkUser();
   return (
-    <div className="w-full border-b-2 bg-white top-0 fixed">
+    <div className="w-full border-b-2 bg-white">
       <div className="flex justify-between items-center mx-auto w-full max-w-[80vw] py-4 lg:max-w-[90vw]">
         <Link href="/">
           <div className="cursor-pointer">
@@ -20,14 +20,15 @@ async function Header() {
           </div>
         </Link>
         <div className="flex items-center">
-        <Link href="/events?create=true">
-          <Button className="mx-3">
-            <PenBox />
-            <span className="hidden md:block text-sm px-2">Create Event</span>
-          </Button>
-        </Link>
+          <Link href="/events?create=true">
+            <Button className="mx-3">
+              <PenBox />
+              <span className="hidden md:block text-sm px-2">Create Event</span>
+            </Button>
+          </Link>
+
           <SignedOut>
-            <SignInButton>
+            <SignInButton forceRedirectUrl="/dashboard">
               <Button className="bg-white text-black border-2 hover:bg-gray-100">
                 Login
               </Button>

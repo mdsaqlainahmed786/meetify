@@ -24,7 +24,7 @@ const AppLayout = ({ children }) => {
     <div>
       <div>{!isLoaded && <BarLoader width={"100%"} color="#4444FF" />}</div>
       <aside>
-        <nav className="bottom-0 fixed z-40 py-2 w-full bg-white border-t-2 lg:left-0 lg:w-[18%] lg:h-screen  lg:static lg:mt-[4rem]">
+        <nav className="bottom-0 fixed z-40 py-2 w-full bg-white border-t-2 lg:left-0 lg:w-[18%] lg:h-screen  lg:static ">
           <div className="flex justify-evenly items-center lg:flex-col lg:space-y-3 lg:justify-center lg:items-start">
             {navItems.map((item, index) => (
               <>

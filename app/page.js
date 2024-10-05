@@ -59,10 +59,10 @@ export default function Home() {
           <h1 className="text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
             Simplify Your Schedules
           </h1>
-          <p className="text-xl text-gray-600">
+          <span className="text-xl text-gray-600">
             Meetify is a simple and easy way to schedule events and meetings in
             a seamless way with your friends and colleagues.
-          </p>
+          </span>
           <Link href="/dashboard">
             <Button className="text-lg font-medium w-44">
               <span className="pr-2">Get Started </span>

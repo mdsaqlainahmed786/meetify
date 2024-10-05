@@ -1,10 +1,12 @@
+"use client"
 import { Input } from "../components/ui/input";
 import React from "react";
-import { Controller, useForm } from "react-hook-form";
+import { Controller, set, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { eventSchema } from "../lib/userValidator";
 import { Button } from "../components/ui/button";
-
+import { useRouter,  } from "next/navigation";
+import useFetch from "../hooks/use-fetch";
 import {
   Select,
   SelectContent,
@@ -12,8 +14,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../components/ui/select";
+import { createEvent } from "../actions/events";
 
-const EventForm = () => {
+const EventForm = ({onSubmitForm, setIsOpen}) => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -23,11 +27,19 @@ const EventForm = () => {
     resolver: zodResolver(eventSchema),
     defaultValues: {
       duration: 30,
-      isPrivate: false,
+      isPrivate: true,
     },
   });
+  const { loading, error, fn: fnupdateUsername } = useFetch(createEvent);
+  const onSubmit = async (data) => {
+    await fnupdateUsername(data)
+    if (!loading && !error) onSubmitForm();
+    router.push('/events');
+       
+    // router.refresh(); // Refresh the page to show updated data
+  };
   return (
-    <form>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col pt-5 space-y-4">
         <label
           htmlFor="title"
@@ -63,7 +75,9 @@ const EventForm = () => {
           <Input
             type="number"
             id="duration"
-            {...register("duration")}
+            {...register("duration", {
+             valueAsNumber: true,
+          })}
             className="mt-1"
           />
         </label>
@@ -103,7 +117,10 @@ const EventForm = () => {
           </span>
         )}
       </div>
-        <Button className="w-full mt-7 -mb-4" type="submit">Submit</Button>
+      {error && <span className="text-red-500 text-sm">{error?.message}</span>}
+      <Button disabled={loading} className="w-full mt-7 -mb-4" type="submit">
+        {loading ? "Creating Event..." : "Create Event"}
+      </Button>
     </form>
   );
 };
