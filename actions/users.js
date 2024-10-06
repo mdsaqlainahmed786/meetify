@@ -9,7 +9,7 @@ export async function updateUsername(username){
             id:userId
         }
     })
-    console.log("exsistingUser",exsistingUser)
+  //  console.log("exsistingUser",exsistingUser)
    if(exsistingUser && exsistingUser.id === userId){
     throw new Error("Username already exists")
    }

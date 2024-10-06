@@ -12,7 +12,7 @@ export async function createEvent(data) {
       clerkUserId: userId,
     },
   });
-  console.log("BullShit.....", validatedSchema);
+  //console.log("BullShit.....", validatedSchema);
   if (!user) throw new Error("User not found");
   const event = await db.event.create({
     data: {
@@ -20,7 +20,7 @@ export async function createEvent(data) {
       userId: user.id,
     },
   });
-  console.log("event", event);
+ // console.log("event", event);
   return event;
 }
 
