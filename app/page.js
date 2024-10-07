@@ -109,7 +109,7 @@ export default function Home() {
       <div className="flex flex-col justify-center items-center space-y-10 mx-auto w-full max-w-[80vw] md:space-y-0 md:flex-row md:gap-5 md:flex-wrap lg:flex-nowrap lg:space-x-10">
         {howItWorks.map((step, index) => (
           <div
-            className="flex flex-col items-center justify-between space-y-5 border-2 py-8 rounded-lg w-full max-w-[20rem] min-h-[18rem] px-3"
+            className="flex flex-col shadow-md bg-white items-center justify-between space-y-5 border-2 py-8 rounded-lg w-full max-w-[20rem] min-h-[18rem] px-3"
             key={index}
           >
             <p className="text-3xl text-blue-600 text-center bg-blue-200 p-5 rounded-full w-[5rem] h-[5rem] flex items-center justify-center">

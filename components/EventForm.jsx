@@ -7,6 +7,7 @@ import { eventSchema } from "../lib/userValidator";
 import { Button } from "../components/ui/button";
 import { useRouter,  } from "next/navigation";
 import useFetch from "../hooks/use-fetch";
+import toast from "react-hot-toast";
 import {
   Select,
   SelectContent,
@@ -31,8 +32,25 @@ const EventForm = ({onSubmitForm, setIsOpen}) => {
     },
   });
   const { loading, error, fn: fnupdateUsername } = useFetch(createEvent);
+  try{
+
+  }catch(err){
+    console.log(err)
+  }
   const onSubmit = async (data) => {
     await fnupdateUsername(data)
+    toast.success("Event created successfully", {
+      style: {
+        border: "1px solid black",
+        padding: "16px",
+        color: "black",
+        marginTop: "75px",
+      },
+      iconTheme: {
+        primary: "blue",
+        secondary: "white",
+      },
+    });
     if (!loading && !error) onSubmitForm();
     router.push('/events');
        

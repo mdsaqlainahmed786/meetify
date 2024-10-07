@@ -32,18 +32,7 @@ export default function EventDropdown() {
     setIsOpen(false);
     if (SearchParams.get("create") === "true") {
       router.replace(window?.location.pathname);
-      toast.success("Event created successfully", {
-        style: {
-          border: "1px solid black",
-          padding: "16px",
-          color: "black",
-          marginTop: "75px",
-        },
-        iconTheme: {
-          primary: "blue",
-          secondary: "white",
-        },
-      });
+     
     }
   };
 

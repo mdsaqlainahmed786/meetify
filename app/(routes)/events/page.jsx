@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { getUserEvents } from "../../../actions/events";
 import EventCard from "../../../components/EventCard";
+
 import { BarLoader } from "react-spinners";
 export default function EventsPage(){
   return(
@@ -23,7 +24,7 @@ async function Events() {
       </h1>
       <div className="grid gap-8 grid-cols-1 lg:grid-cols-2 mx-auto max-w-[90vw]">
     {events.map((event) => (
-      <EventCard key={event.id} event={event} username={username} />
+      <EventCard key={event.id} event={event} username={username}/>
     ))}
       </div>
     </div>

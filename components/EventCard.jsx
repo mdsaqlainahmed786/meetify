@@ -39,8 +39,13 @@ const EventCard = ({ event, username, isPublic = false }) => {
     }
     if (!loading && !error) router.push('/events');
   }
+  const handleCardClick = (e)=>{
+    if(e.target.tagName !== "BUTTON" && e.target.tagName!=="SVG") {
+      window?.open(`${window?.location.origin}/${username}/${event.id}`, "_blank");
+    };
+  }
   return (
-    <Card>
+    <Card onClick={handleCardClick} className="cursor-pointer">
       <CardHeader>
         <CardTitle>{event.title}</CardTitle>
         <CardDescription>

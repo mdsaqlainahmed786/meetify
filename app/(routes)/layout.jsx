@@ -28,18 +28,21 @@ const AppLayout = ({ children }) => {
           <div className="flex justify-evenly items-center lg:flex-col lg:space-y-3 lg:justify-center lg:items-start">
             {navItems.map((item, index) => (
               <>
-                <Link href={item.href}>
+                <Link href={item.href} key={index}>
+              {/* <div className="hidden lg:w-full lg:hover:bg-gray-200 lg:flex justify-start items-center"> */}
+
                   <div
-                    className={`flex flex-col items-center space-y-0.5 cursor-pointer lg:flex-row lg:space-y-0 lg:space-x-3 lg:mt-5 lg:w-full lg:hover:bg-blue-200 lg:text-center ${
+                    className={`flex flex-col items-center space-y-0.5 cursor-pointer lg:flex-row lg:space-y-0 lg:space-x-3 lg:mt-5 lg:text-center ${
                       pathname === item.href ? "text-blue-600" : "text-gray-700"
                     }`}
                     key={index}
                   >
-                    <div className="flex flex-col justify-center items-center lg:pl-20 lg:flex-row lg:space-x-3 lg:py-3">
+                    <div className="flex flex-col justify-center  items-center lg:flex-row lg:space-x-3 lg:py-3 lg:w-full lg:px-10">
                       <span className="text-xl">{item.icon}</span>
-                      <span className="text-sm">{item.label}</span>
+                      <span className="text-lg">{item.label}</span>
                     </div>
-                  </div>
+                  {/* </div> */}
+              </div>
                 </Link>
               </>
             ))}

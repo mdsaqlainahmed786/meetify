@@ -122,7 +122,6 @@ export default function Dashboard() {
               {loading && (
                 <BarLoader className="mb-4" width={"100%"} color="#36d7b7" />
               )}
-              <Toaster position="top-right" reverseOrder={false} />
               <Button
                 className="flex justify-start w-[9rem] items-center"
                 type="submit"
