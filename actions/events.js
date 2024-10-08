@@ -162,10 +162,11 @@ export async function getEventAvailability(eventId) {
         dateStr,
         availability.timeGap
       );
-
+      const startTimes = slots.filter((_, index) => index % 2 === 0);
       availableDates.push({
         date: dateStr,
         slots,
+        startTimes,
       });
     }
   }
