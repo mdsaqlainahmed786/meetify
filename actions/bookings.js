@@ -1,7 +1,9 @@
+"use server"
 import { db } from "../lib/prisma";
 import { auth, clerkClient } from "@clerk/nextjs/server";
 import { google } from "googleapis";
 export async function createBooking(bookingData) {
+  console.log("FREAKING BOOKING AND MUST HAVE EVENTid>>>>>>>>>>>>>",bookingData); 
   try {
     const event = await db.event.findUnique({
       where: {
@@ -15,7 +17,7 @@ export async function createBooking(bookingData) {
       throw new Error("Event not found");
     }
 
-    const { data } = clerkClient.users.getUserOauthAccessToken(
+    const { data } = await clerkClient.users.getUserOauthAccessToken(
       event.user.clerkUserId,
       "oauth_google"
     );
@@ -66,5 +68,6 @@ export async function createBooking(bookingData) {
     return { success: true, booking, meetLink };
   } catch (err) {
     console.log(err);
+    return { success: false, error: err.message };
   }
 }
