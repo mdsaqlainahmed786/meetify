@@ -8,7 +8,7 @@ import { SignedIn } from "@clerk/nextjs";
 import { checkUser } from "../lib/checkUser";
 import UserMenu from "./UserMenu";
 async function Header() {
-  const user=await checkUser();
+  await checkUser();
   return (
     <div className="w-full border-b-2 bg-white">
       <div className="flex justify-between items-center mx-auto w-full max-w-[80vw] py-4 lg:max-w-[90vw]">
@@ -34,9 +34,9 @@ async function Header() {
               </Button>
             </SignInButton>
           </SignedOut>
-         
-         { user &&  <UserMenu />}
-        
+         <SignedIn>
+          <UserMenu/>
+         </SignedIn>
         </div>
       </div>
     </div>

@@ -1,12 +1,13 @@
 "use server";
-import { use } from "react";
 import { db } from "../lib/prisma";
 import { auth } from "@clerk/nextjs/server";
 import { google } from "googleapis";
 import { clerkClient } from "@clerk/nextjs/server";
 export async function getUserMeetings(type = "upcoming") {
-  const { userId } = auth();
+  const { userId } =  auth();
+ // console.log("userId>>>>>>>>>>>>>>>", userId);
   if (!userId) {
+    console.log("userId not found")
     throw new Error("Unauthorized");
   }
 
@@ -14,6 +15,7 @@ export async function getUserMeetings(type = "upcoming") {
     where: { clerkUserId: userId },
   });
 
+ // console.log(user, "USER");
   if (!user) {
     throw new Error("User not found");
   }
@@ -64,7 +66,8 @@ export async function cancelMeeting(meetingId) {
       event: true,
       user: true,
     },
-  });const { data } = await clerkClient.users.getUserOauthAccessToken(
+  });
+  const { data } = await clerkClient.users.getUserOauthAccessToken(
     meeting.user.clerkUserId,
     "oauth_google"
   );
