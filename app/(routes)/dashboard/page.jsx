@@ -87,13 +87,13 @@ export default function Dashboard() {
       <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-purple-400 text-center pt-5 lg:text-6xl lg:text-left">
         Dashboard
       </h1>
-      <Card className="mx-4 lg:mx-0">
+      <Card className="bg-[#1F1F1F] border-2 border-purple-600 mx-4 lg:mx-0">
         <CardHeader>
-          <CardTitle>Welcome, {user?.firstName}!</CardTitle>
+          <CardTitle className="text-white">Welcome, {user?.firstName}!</CardTitle>
         </CardHeader>
         {/* user meetings */}
       </Card>
-      <Card className="mx-4 lg:mx-0">
+      <Card className="bg-[#1F1F1F] border-2 text-white border-purple-600 mx-4 lg:mx-0">
         <CardHeader>
           <CardTitle>Your Unique Link</CardTitle>
         </CardHeader>
@@ -122,7 +122,7 @@ export default function Dashboard() {
                 <BarLoader className="mb-4" width={"100%"} color="#36d7b7" />
               )}
               <Button
-                className="flex justify-start w-[9rem] items-center"
+                className="flex justify-start w-[9rem] items-center bg-purple-600 hover:bg-purple-800"
                 type="submit"
                 disabled={loading}
               >

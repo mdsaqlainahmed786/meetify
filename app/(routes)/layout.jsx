@@ -24,7 +24,7 @@ const AppLayout = ({ children }) => {
     <div>
       <div>{!isLoaded && <BarLoader width={"100%"} color="#4444FF" />}</div>
       <aside>
-        <nav className="bottom-0 fixed z-40 py-2 w-full bg-white border-t-2 lg:left-0 lg:w-[18%] lg:h-screen  lg:static ">
+        <nav className="bottom-0 fixed z-40 py-2 w-full bg-[#1F1F1F] border-t-2 lg:border-r-2 lg:pt-4 lg:border-t-0 border-purple-600  lg:left-0 lg:w-[18%] lg:h-screen lg:static ">
           <div className="flex justify-evenly items-center lg:flex-col lg:space-y-3 lg:justify-center lg:items-start">
             {navItems.map((item, index) => (
               <>
@@ -32,16 +32,16 @@ const AppLayout = ({ children }) => {
                   {/* <div className="hidden lg:w-full lg:hover:bg-gray-200 lg:flex justify-start items-center"> */}
 
                   <div
-                    className={`flex flex-col items-center space-y-0.5 cursor-pointer lg:flex-row lg:space-y-0 lg:space-x-3 lg:mt-5 lg:text-center ${
+                    className={`flex flex-col items-center space-y-0.5 cursor-pointer lg:flex-row lg:space-y-0 lg:space-x-3 lg:mt-0 lg:text-center ${
                       pathname === item.href
                         ? "text-purple-600"
-                        : "text-gray-700"
+                        : "text-white"
                     }`}
                     key={index}
                   >
-                    <div className="flex flex-col justify-center  items-center lg:flex-row lg:space-x-3 lg:py-3 lg:w-full lg:px-10">
-                      <span className="text-xl">{item.icon}</span>
-                      <span className="text-lg">{item.label}</span>
+                    <div className="flex flex-col justify-center space-y-1  items-center lg:flex-row lg:space-x-3 lg:py-3 lg:w-full lg:px-10">
+                      <span className="text-xl lg:text-xl">{item.icon}</span>
+                      <span className="text-sm lg:text-lg">{item.label}</span>
                     </div>
                     {/* </div> */}
                   </div>

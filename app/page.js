@@ -90,13 +90,13 @@ export default function Home() {
         Key Features
       </p>
       <div
-        data-aos="fade-up"
         className="flex flex-col w-full justify-center mx-auto max-w-[80vw] md:mx-auto md:max-w-[90vw] text-center md:flex-row md:space-y-0 md:space-x-8 space-y-8"
       >
         {Features.map((feature, index) => (
           <Card
             className="shadow-md bg-[#1F1F1F] border-2 border-purple-500"
             key={index}
+            data-aos="fade-up"
           >
             <CardHeader>
               <div className="flex justify-center flex-col items-center space-y-5">

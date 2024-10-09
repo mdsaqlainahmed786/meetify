@@ -10,7 +10,7 @@ import UserMenu from "./UserMenu";
 async function Header() {
   await checkUser();
   return (
-    <div className="w-full border-b-2 bg-[#1F1F1F] border-b-[#1F1F1F]">
+    <div className="w-full bg-[#1F1F1F]">
       <div className="flex justify-between items-center mx-auto w-full max-w-[80vw] py-4 lg:max-w-[90vw]">
         <Link href="/">
           <div className="cursor-pointer">
