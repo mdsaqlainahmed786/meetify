@@ -9,10 +9,7 @@ import MeetingsList from "./_components/meeting-list";
 import { Suspense } from "react";
 
 
-export const metadata = {
-  title: "Your Meetings | Meetify",
-  description: "View and manage your upcoming and past meetings.",
-};
+
 
 export default function Meetings() {
   return (
