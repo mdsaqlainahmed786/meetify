@@ -34,11 +34,11 @@ const BookingForm = ({ event, availability }) => {
     }
   }, [selectedTime]);
   const { loading, data, fn: fnCreateBooking } = useFetch(createBooking);
-  
+
   const onSubmit = async (data) => {
-   // console.log("form data submitted:", data);
+    // console.log("form data submitted:", data);
     // await fetchAvailability(data);
-    if(!selectedDate || !selectedTime) {
+    if (!selectedDate || !selectedTime) {
       console.error("Please select a date and time");
       return;
     }
@@ -46,7 +46,7 @@ const BookingForm = ({ event, availability }) => {
       `${format(selectedDate, "yyyy-MM-dd")}T${selectedTime}`
     );
     const endTime = new Date(startTime.getTime() + event.duration * 60000);
-     //console.log("EVENT ID", event.id);
+    //console.log("EVENT ID", event.id);
     const bookingData = {
       eventId: event.id,
       name: data.name,
@@ -60,33 +60,33 @@ const BookingForm = ({ event, availability }) => {
     console.log("data", data);
   };
   const availableDays = availability.map((day) => new Date(day.date));
- // console.log("availability days", availability);
+  // console.log("availability days", availability);
   const timeSlots = selectedDate
     ? availability.find(
         (day) => day.date === format(selectedDate, "yyyy-MM-dd")
       )?.slots || []
     : [];
-    if (data) {
-      return (
-        <div className="text-center p-10 border bg-white">
-          <h2 className="text-2xl font-bold mb-4">Booking successful!</h2>
-          {data.meetLink && (
-            <p>
-              Join the meeting:{" "}
-              <a
-                href={data.meetLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-500 hover:underline"
-              >
-                {data.meetLink}
-              </a>
-            </p>
-          )}
-        </div>
-      );
-    }
-  
+  if (data) {
+    return (
+      <div className="text-center p-10 border bg-white">
+        <h2 className="text-2xl font-bold mb-4">Booking successful!</h2>
+        {data.meetLink && (
+          <p>
+            Join the meeting:{" "}
+            <a
+              href={data.meetLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-purple-500 hover:underline"
+            >
+              {data.meetLink}
+            </a>
+          </p>
+        )}
+      </div>
+    );
+  }
+
   //console.log("timeSlots", timeSlots);
   return (
     <div className="bg-white px-5">
@@ -106,7 +106,7 @@ const BookingForm = ({ event, availability }) => {
             }}
             modifiersStyles={{
               avaialble: {
-                backgroundColor: "lightblue",
+                backgroundColor: "lightpurple",
                 borderRadius: 100,
               },
             }}

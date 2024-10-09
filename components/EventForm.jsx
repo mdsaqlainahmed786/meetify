@@ -1,11 +1,11 @@
-"use client"
+"use client";
 import { Input } from "../components/ui/input";
 import React from "react";
 import { Controller, set, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { eventSchema } from "../lib/userValidator";
 import { Button } from "../components/ui/button";
-import { useRouter,  } from "next/navigation";
+import { useRouter } from "next/navigation";
 import useFetch from "../hooks/use-fetch";
 import toast from "react-hot-toast";
 import {
@@ -17,7 +17,7 @@ import {
 } from "../components/ui/select";
 import { createEvent } from "../actions/events";
 
-const EventForm = ({onSubmitForm, setIsOpen}) => {
+const EventForm = ({ onSubmitForm, setIsOpen }) => {
   const router = useRouter();
   const {
     register,
@@ -32,13 +32,12 @@ const EventForm = ({onSubmitForm, setIsOpen}) => {
     },
   });
   const { loading, error, fn: fnupdateUsername } = useFetch(createEvent);
-  try{
-
-  }catch(err){
-    console.log(err)
+  try {
+  } catch (err) {
+    console.log(err);
   }
   const onSubmit = async (data) => {
-    await fnupdateUsername(data)
+    await fnupdateUsername(data);
     toast.success("Event created successfully", {
       style: {
         border: "1px solid black",
@@ -47,13 +46,13 @@ const EventForm = ({onSubmitForm, setIsOpen}) => {
         marginTop: "75px",
       },
       iconTheme: {
-        primary: "blue",
+        primary: "purple",
         secondary: "white",
       },
     });
     if (!loading && !error) onSubmitForm();
-    router.push('/events');
-       
+    router.push("/events");
+
     // router.refresh(); // Refresh the page to show updated data
   };
   return (
@@ -94,8 +93,8 @@ const EventForm = ({onSubmitForm, setIsOpen}) => {
             type="number"
             id="duration"
             {...register("duration", {
-             valueAsNumber: true,
-          })}
+              valueAsNumber: true,
+            })}
             className="mt-1"
           />
         </label>

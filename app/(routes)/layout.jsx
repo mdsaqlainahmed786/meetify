@@ -29,11 +29,13 @@ const AppLayout = ({ children }) => {
             {navItems.map((item, index) => (
               <>
                 <Link href={item.href} key={index}>
-              {/* <div className="hidden lg:w-full lg:hover:bg-gray-200 lg:flex justify-start items-center"> */}
+                  {/* <div className="hidden lg:w-full lg:hover:bg-gray-200 lg:flex justify-start items-center"> */}
 
                   <div
                     className={`flex flex-col items-center space-y-0.5 cursor-pointer lg:flex-row lg:space-y-0 lg:space-x-3 lg:mt-5 lg:text-center ${
-                      pathname === item.href ? "text-blue-600" : "text-gray-700"
+                      pathname === item.href
+                        ? "text-purple-600"
+                        : "text-gray-700"
                     }`}
                     key={index}
                   >
@@ -41,8 +43,8 @@ const AppLayout = ({ children }) => {
                       <span className="text-xl">{item.icon}</span>
                       <span className="text-lg">{item.label}</span>
                     </div>
-                  {/* </div> */}
-              </div>
+                    {/* </div> */}
+                  </div>
                 </Link>
               </>
             ))}

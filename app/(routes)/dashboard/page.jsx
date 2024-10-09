@@ -31,7 +31,6 @@ export default function Dashboard() {
   useEffect(() => {
     setValue("username", user?.username);
   }, [isLoader, user]);
-  
 
   const {
     register,
@@ -63,7 +62,7 @@ export default function Dashboard() {
           marginTop: "75px",
         },
         iconTheme: {
-          primary: "blue",
+          primary: "purple",
           secondary: "white",
         },
       });
@@ -85,7 +84,7 @@ export default function Dashboard() {
 
   return (
     <div className="w-full space-y-5 lg:w-[80%] lg:p-5">
-      <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 text-center pt-5 lg:text-6xl lg:text-left">
+      <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-purple-400 text-center pt-5 lg:text-6xl lg:text-left">
         Dashboard
       </h1>
       <Card className="mx-4 lg:mx-0">

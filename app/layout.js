@@ -18,15 +18,15 @@ export default function RootLayout({ children }) {
         <body className={inter.className}>
           <Toaster position="top-right" reverseOrder={false} />
           <Header />
-          <main className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-            {children}
-          </main>
-          {/* <footer className="bg-blue-100 w-full py-12">
+          <main className="min-h-screen bg-[#121212]">{children}</main>
+          {/* <footer className="bg-purple-100 w-full py-12">
           <div className="container mx-auto text-center text-gray-600">
             <p>Made by MD Saqlian Ahmed</p>
           </div>
         </footer> */}
+        <div className="pt-">
           <FooterComp />
+        </div>
           <EventDropdown />
         </body>
       </html>
