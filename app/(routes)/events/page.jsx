@@ -6,7 +6,7 @@ import { BarLoader } from "react-spinners";
 export default function EventsPage() {
   return (
     <Suspense
-      fallback={<BarLoader className="mt-5" width={"100%"} color="#4444FF" />}
+      fallback={<BarLoader className="mt-4" width={"100%"} color="#A020F0" />}
     >
       <Events />
     </Suspense>
@@ -24,7 +24,7 @@ async function Events() {
       <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-purple-400 text-center pt-5 lg:text-6xl lg:text-left">
         Events
       </h1>
-      <div className="grid gap-8 grid-cols-1 lg:grid-cols-2 mx-auto max-w-[90vw]">
+      <div className="pb-11 grid gap-8 grid-cols-1 lg:grid-cols-2 mx-auto max-w-[90vw]">
         {events.map((event) => (
           <EventCard key={event.id} event={event} username={username} />
         ))}

@@ -45,17 +45,17 @@ const EventCard = ({ event, username, isPublic = false }) => {
     };
   }
   return (
-    <Card onClick={handleCardClick} className="cursor-pointer">
+    <Card  onClick={handleCardClick} className="cursor-pointer bg-[#1F1F1F] border-2 border-purple-600">
       <CardHeader>
-        <CardTitle>{event.title}</CardTitle>
-        <CardDescription>
+        <CardTitle className="text-white">{event.title}</CardTitle>
+        <CardDescription className="">
           {event.duration} mins | {event.isPrivate ? "private" : "Public"}
         </CardDescription>
       </CardHeader>
       <CardContent>
         <div className="flex justify-between">
-          <span>{event.description}</span>
-          <span className="text-sm text-neutral-600">
+          <span className="text-white">{event.description}</span>
+          <span className="text-sm text-neutral-300">
             {event._count.bookings} Bookings
           </span>
         </div>
@@ -63,13 +63,13 @@ const EventCard = ({ event, username, isPublic = false }) => {
       {!isPublic && (
         <CardFooter className="flex gap-2">
           {/* <Link href="/"> */}
-          <Button onClick={handleCopy} variant="outline">
+          <Button onClick={handleCopy} className="border-2 bg-purple-600 hover:bg-purple-800 border-purple-600 ">
             <GoLink className="text-lg mr-2" />
             <span>{isCopied ? "Copied!" : "Copy Link"}</span>
           </Button>
           {/* </Link> */}
           <Link href="/">
-            <Button variant="destructive" className="" onClick={onDelete} disabled={loading}>
+            <Button  className="border-2 border-purple-600 " onClick={onDelete} disabled={loading}>
               <MdOutlineDelete className="text-lg mr-2" />
               <span>{loading?"Deleting":"Delete"}</span>
             </Button>

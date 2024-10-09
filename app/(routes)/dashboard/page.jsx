@@ -53,12 +53,12 @@ export default function Dashboard() {
   const onSubmit = async (data) => {
     try {
       const result = await fnupdateUsername(data.username);
-
       toast.success("Username updated successfully", {
         style: {
           border: "1px solid black",
           padding: "16px",
-          color: "black",
+          backgroundColor:"#1F1F1F",
+          color: "white",
           marginTop: "75px",
         },
         iconTheme: {
@@ -68,14 +68,15 @@ export default function Dashboard() {
       });
     } catch (err) {
       toast.error(err.message || "Failed to update username", {
-        style: {
+       style: {
           border: "1px solid black",
           padding: "16px",
-          color: "red",
+          backgroundColor:"#1F1F1F",
+          color: "white",
           marginTop: "75px",
         },
         iconTheme: {
-          primary: "red",
+          primary: "purple",
           secondary: "white",
         },
       });
@@ -119,7 +120,7 @@ export default function Dashboard() {
                 <span className="text-red-500 text-sm">{error?.message}</span>
               )}
               {loading && (
-                <BarLoader className="mb-4" width={"100%"} color="#36d7b7" />
+                <BarLoader className="mb-4" width={"100%"} color="#A020F0" />
               )}
               <Button
                 className="flex justify-start w-[9rem] items-center bg-purple-600 hover:bg-purple-800"

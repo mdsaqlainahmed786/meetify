@@ -39,16 +39,17 @@ const EventForm = ({ onSubmitForm, setIsOpen }) => {
   const onSubmit = async (data) => {
     await fnupdateUsername(data);
     toast.success("Event created successfully", {
-      style: {
-        border: "1px solid black",
-        padding: "16px",
-        color: "black",
-        marginTop: "75px",
-      },
-      iconTheme: {
-        primary: "purple",
-        secondary: "white",
-      },
+     style: {
+          border: "1px solid black",
+          padding: "16px",
+          backgroundColor:"#1F1F1F",
+          color: "white",
+          marginTop: "75px",
+        },
+        iconTheme: {
+          primary: "purple",
+          secondary: "white",
+        },
     });
     if (!loading && !error) onSubmitForm();
     router.push("/events");
@@ -60,23 +61,23 @@ const EventForm = ({ onSubmitForm, setIsOpen }) => {
       <div className="flex flex-col pt-5 space-y-4">
         <label
           htmlFor="title"
-          className="block text-sm font-medium text-start text-gray-700"
+          className="block text-sm font-medium text-start text-white"
         >
           Event Title
-          <Input id="title" {...register("title")} className="mt-1" />
+          <Input  id="title" {...register("title")}  className="mt-1 border-2" />
         </label>
         {errors.title && (
           <span className="text-red-500 text-sm">{errors?.title.message}</span>
         )}
         <label
           htmlFor="description"
-          className="block text-sm font-medium text-start text-gray-700"
+          className="block text-sm font-medium text-start text-white"
         >
           Description
           <Input
             id="description"
             {...register("description")}
-            className="mt-1"
+            className="mt-1 border-2 border-white-600"
           />
         </label>
         {errors.description && (
@@ -86,7 +87,7 @@ const EventForm = ({ onSubmitForm, setIsOpen }) => {
         )}
         <label
           htmlFor="duration"
-          className="block text-sm font-medium text-start text-gray-700"
+          className="block text-sm font-medium text-start text-white"
         >
           Duration(minutes)
           <Input
@@ -95,7 +96,7 @@ const EventForm = ({ onSubmitForm, setIsOpen }) => {
             {...register("duration", {
               valueAsNumber: true,
             })}
-            className="mt-1"
+           className="mt-1 border-2 border-white-600"
           />
         </label>
         {errors.duration && (
@@ -105,7 +106,7 @@ const EventForm = ({ onSubmitForm, setIsOpen }) => {
         )}
         <label
           htmlFor="isPrivate"
-          className="block text-sm font-medium text-start text-gray-700"
+          className="block text-sm font-medium text-start text-white"
         >
           Event Privacy
         </label>
@@ -116,14 +117,14 @@ const EventForm = ({ onSubmitForm, setIsOpen }) => {
             <Select
               value={field.value ? "true" : "false"}
               onValueChange={(value) => field.onChange(value === "true")}
-              className="mt-1"
+              className="mt-1 "
             >
-              <SelectTrigger>
+              <SelectTrigger className="border-2 border-white-600">
                 <SelectValue placeholder="Select Privacy" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="true">Private</SelectItem>
-                <SelectItem value="false">Public</SelectItem>
+                <SelectItem className="" value="true">Private</SelectItem>
+                <SelectItem className="" value="false">Public</SelectItem>
               </SelectContent>
             </Select>
           )}
@@ -135,7 +136,7 @@ const EventForm = ({ onSubmitForm, setIsOpen }) => {
         )}
       </div>
       {error && <span className="text-red-500 text-sm">{error?.message}</span>}
-      <Button disabled={loading} className="w-full mt-7 -mb-4" type="submit">
+      <Button  disabled={loading} className="w-full mt-7 -mb-4 bg-purple-600 hover:bg-purple-800" type="submit">
         {loading ? "Creating Event..." : "Create Event"}
       </Button>
     </form>

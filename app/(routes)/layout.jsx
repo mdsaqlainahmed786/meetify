@@ -22,7 +22,7 @@ const AppLayout = ({ children }) => {
 
   return (
     <div>
-      <div>{!isLoaded && <BarLoader width={"100%"} color="#4444FF" />}</div>
+      <div>{!isLoaded && <BarLoader width={"100%"} color="#A020F0" />}</div>
       <aside>
         <nav className="bottom-0 fixed z-40 py-2 w-full bg-[#1F1F1F] border-t-2 lg:border-r-2 lg:pt-4 lg:border-t-0 border-purple-600  lg:left-0 lg:w-[18%] lg:h-screen lg:static ">
           <div className="flex justify-evenly items-center lg:flex-col lg:space-y-3 lg:justify-center lg:items-start">
