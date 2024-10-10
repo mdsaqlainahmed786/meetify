@@ -62,11 +62,11 @@ export default function Home() {
   ];
   return (
     <div className="pb-16">
-      {/* Hero Section */}
       <div
+       data-aos="fade-right"
         className="flex justify-between items-center w-full pt-32 mx-auto max-w-[90vw]"
       >
-        <div  data-aos="fade-right" className="flex justify-start flex-col space-y-5 lg:w-[50%]">
+        <div className="flex justify-start flex-col space-y-5 lg:w-[50%]">
           <h1 className="text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-purple-400">
             Simplify Your Schedules
           </h1>

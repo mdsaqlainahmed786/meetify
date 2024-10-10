@@ -14,8 +14,8 @@ export default function Meetings() {
       <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-purple-400 text-center pt-5 lg:text-6xl lg:text-left">
         Meetings
       </h1>
-      <Tabs defaultValue="upcoming">
-        <TabsList>
+      <Tabs className="flex flex-col justify-center items-center lg:justify-start lg:items-start" defaultValue="upcoming">
+        <TabsList className="bg-[#1F1F1F] mb-5">
           <TabsTrigger value="upcoming">Upcoming</TabsTrigger>
           <TabsTrigger value="past">Past</TabsTrigger>
         </TabsList>

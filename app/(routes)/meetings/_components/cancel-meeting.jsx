@@ -11,7 +11,7 @@ const CancelMeetingBtn = ({ meetingId }) => {
   };
   return (
     <>
-      <Button onClick={handleCancelMeeting} variant="destructive">
+      <Button onClick={handleCancelMeeting} className="border-2 border-purple-600 ">
        {loading ? "Cancelling..." : "Cancel Meeting"}
       </Button>
     </>
