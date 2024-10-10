@@ -22,40 +22,55 @@ const AppLayout = ({ children }) => {
 
   return (
     <div>
-      <div>{!isLoaded && <BarLoader width={"100%"} color="#A020F0" />}</div>
-      <aside>
-        <nav className="bottom-0 fixed z-40 py-2 w-full bg-[#1F1F1F] border-t-2 lg:border-r-2 lg:pt-4 lg:border-t-0 border-purple-600  lg:left-0 lg:w-[18%] lg:h-screen lg:static ">
-          <div className="flex justify-evenly items-center lg:flex-col lg:space-y-3 lg:justify-center lg:items-start">
-            {navItems.map((item, index) => (
-              <>
-                <Link href={item.href} key={index}>
-                  {/* <div className="hidden lg:w-full lg:hover:bg-gray-200 lg:flex justify-start items-center"> */}
-
-                  <div
-                    className={`flex flex-col items-center space-y-0.5 cursor-pointer lg:flex-row lg:space-y-0 lg:space-x-3 lg:mt-0 lg:text-center ${
-                      pathname === item.href
-                        ? "text-purple-600"
-                        : "text-white"
+      {!isLoaded && <BarLoader width={"100%"} color="#A020F0" />}
+      <div className="flex flex-col min-h-screen md:flex-row">
+        {/* Sidebar for medium screens and up */}
+        <aside className="hidden md:block w-64 bg-[#1F1F1F] border-r-2 border-purple-600">
+          <nav className="mt-8 text-white">
+            <ul>
+              {navItems.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className={`flex items-center px-4 py-4 hover:bg-neutral-800 ${
+                      pathname === item.href ? "text-purple-600" : "text-white"
                     }`}
-                    key={index}
                   >
-                    <div className="flex flex-col justify-center space-y-1  items-center lg:flex-row lg:space-x-3 lg:py-3 lg:w-full lg:px-10">
-                      <span className="text-xl lg:text-xl">{item.icon}</span>
-                      <span className="text-sm lg:text-lg">{item.label}</span>
-                    </div>
-                    {/* </div> */}
-                  </div>
+                    <span className="w-5 h-5 mr-3" >{item.icon}</span>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </aside>
+
+        {/* Main content */}
+        <main className="flex-1 overflow-y-auto p-4 pb-[5rem] md:p-8">
+          {children}
+        </main>
+
+        {/* Bottom tabs for small screens */}
+        <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-[#1F1F1F] border-t-2 border-purple-600 shadow-md">
+          <ul className="flex justify-around">
+            {navItems.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className={`flex flex-col items-center py-2 px-4 ${
+                    pathname === item.href ? "text-purple-600" : "text-white"
+                  }`}
+                >
+                  <span className="w-6 h-6" >{item.icon}</span>
+                  <span className="text-xs">{item.label}</span>
                 </Link>
-              </>
+              </li>
             ))}
-          </div>
+          </ul>
         </nav>
-      </aside>
-      <main className="lg:flex-grow lg:ml-64 lg:p-10 lg:-mt-[49rem]">
-        {children}
-      </main>
+      </div>
     </div>
   );
 };
 
-export default AppLayout;
+export default AppLayout;

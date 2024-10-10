@@ -19,14 +19,14 @@ export default function RootLayout({ children }) {
           <Toaster position="top-right" reverseOrder={false} />
           <Header />
           <main className="min-h-screen bg-[#121212]">{children}</main>
-          {/* <footer className="bg-purple-100 w-full py-12">
+          {/* <footer className="bg-[#1F1F1F] text-white w-full py-12">
           <div className="container mx-auto text-center text-gray-600">
             <p>Made by MD Saqlian Ahmed</p>
           </div>
         </footer> */}
-        <div className="pt-">
+        {/* <div className="pt-">
           <FooterComp />
-        </div>
+        </div> */}
           <EventDropdown />
         </body>
       </html>

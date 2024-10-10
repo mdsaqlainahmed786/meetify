@@ -15,7 +15,7 @@ export default function Meetings() {
         Meetings
       </h1>
       <Tabs className="flex flex-col justify-center items-center lg:justify-start lg:items-start" defaultValue="upcoming">
-        <TabsList className="bg-[#1F1F1F] mb-5">
+        <TabsList className="bg-[#1F1F1F] mb-10">
           <TabsTrigger value="upcoming">Upcoming</TabsTrigger>
           <TabsTrigger value="past">Past</TabsTrigger>
         </TabsList>
