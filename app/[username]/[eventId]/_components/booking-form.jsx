@@ -68,7 +68,7 @@ const BookingForm = ({ event, availability }) => {
     : [];
   if (data) {
     return (
-      <div className="text-center p-10 border bg-white">
+      <div className="text-center p-10 bg-[#1F1F1F] text-white border-2 border-purple-600">
         <h2 className="text-2xl font-bold mb-4">Booking successful!</h2>
         {data.meetLink && (
           <p>
@@ -89,9 +89,9 @@ const BookingForm = ({ event, availability }) => {
 
   //console.log("timeSlots", timeSlots);
   return (
-    <div className="bg-white px-5">
+    <div className="border-2 border-purple-600 bg-[#1F1F1F] rounded-md text-white px-5">
       <div className="flex flex-col space-x-0 md:flex-row md:space-x-6">
-        <div className="py-8">
+        <div className="flex justify-center py-8">
           <DayPicker
             mode="single"
             className=""
@@ -106,29 +106,32 @@ const BookingForm = ({ event, availability }) => {
             }}
             modifiersStyles={{
               avaialble: {
-                backgroundColor: "lightpurple",
+                backgroundColor: "purple",
                 borderRadius: 100,
               },
             }}
           />
         </div>
-        <div className="w-full h-full py-10 md:overflow-scroll no-scrollbar">
+        <div className="w-full h-full py-10">
           {selectedDate && (
-            <div className="mb-4">
-              <h3 className="text-lg font-semibold mb-2">
+            <div className="mb-4 ">
+              <h3 className="text-lg text-center pb-3 font-semibold mb-2">
                 Available Time slots
               </h3>
               <div className="grid grid-cols-2 lg:grid-cols-3 gap-2">
                 {timeSlots.length === 0
-                  ? ""
+                  ? (<p className="flex justify-center text-center">No available slots</p>)
                   : timeSlots.map((slot) => {
                       return (
                         <Button
                           key={slot}
                           onClick={() => setSelectedTime(slot)}
-                          variant={
-                            selectedTime === slot ? "default" : "outline"
-                          }
+                          className={`${
+                            selectedTime === slot
+                              ? "bg-purple-600 hover:bg-purple-600"
+                              : "border-2 border-purple-600 hover:bg-purple-800"
+                          }`}
+                          variant={selectedTime === slot ? "default" : ""}
                         >
                           {slot}
                         </Button>
@@ -140,28 +143,31 @@ const BookingForm = ({ event, availability }) => {
         </div>
       </div>
       {selectedTime && (
-        <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
-          <div className="">
-            <Input {...register("name")} placeholder=" your Name" />
-            {error?.name && (
-              <p className="text-red-500 text-sm">{error.name.message}</p>
-            )}
-          </div>
-          <div>
-            <Input {...register("email")} placeholder=" your Email" />
-            {error?.email && (
-              <p className="text-red-500 text-sm">{error.email.message}</p>
-            )}
-          </div>
-          <div>
-            <Textarea
-              {...register("additionalInfo")}
-              placeholder="Additional Information"
-            />
-          </div>
-          <Button type="submit" disabled={loading} className="w-full">
-            {loading ? "Scheduling..." : "Schedule Event"}
-          </Button>
+        <form className="space-y-4 pb-5" onSubmit={handleSubmit(onSubmit)}>
+        <h3 className="text-lg text-center pb-3 font-semibold ">Enter Details of meeting</h3>
+          {/* <div className="pb-10"> */}
+            <div className="">
+              <Input {...register("name")} placeholder=" your Name" />
+              {error?.name && (
+                <p className="text-red-500 text-sm">{error.name.message}</p>
+              )}
+            </div>
+            <div>
+              <Input {...register("email")} placeholder=" your Email" />
+              {error?.email && (
+                <p className="text-red-500 text-sm">{error.email.message}</p>
+              )}
+            </div>
+            <div>
+              <Textarea
+                {...register("additionalInfo")}
+                placeholder="Additional Information"
+              />
+            </div>
+            <Button type="submit" disabled={loading} className="w-full bg-purple-600 hover:bg-purple-800">
+              {loading ? "Scheduling..." : "Schedule Event"}
+            </Button>
+          {/* </div> */}
         </form>
       )}
     </div>

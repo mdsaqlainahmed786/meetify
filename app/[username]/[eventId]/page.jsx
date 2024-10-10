@@ -33,7 +33,7 @@ export default async function EventBookingPage({ params }) {
   }
 
   return (
-    <div className="flex flex-col space-y-3 mx-auto w-full max-w-[90vw] justify-center lg:flex-row px-4 py-8">
+    <div className="flex flex-col space-y-3 mx-auto w-full max-w-[90vw] justify-center lg:flex-row px-4 py-8 lg:space-y-3">
       <EventDetails event={event} />
       <Suspense fallback={<div>Loading booking form...</div>}>
         <BookingForm event={event} availability={availability} />
