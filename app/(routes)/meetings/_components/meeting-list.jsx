@@ -29,7 +29,7 @@ const MeetingList = ({ meetings, type }) => {
       {meetings.map((meet, index) => {
         return (
           <Card
-            className="bg-[#1F1F1F] border-2 w-[18rem] border-purple-600 flex flex-col justify-between"
+            className="bg-[#1F1F1F] border-2 w-[18rem] border-purple-600 flex flex-col justify-between mb-5"
             key={index}
           >
             <div className="flex-grow">

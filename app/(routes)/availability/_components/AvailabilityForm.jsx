@@ -159,31 +159,33 @@ function AvailabilityForm({ initialData }) {
         );
       })}
       <div className="flex flex-col justify-start items-center w-full lg:max-w-[100vw] lg:items-start">
-  <div className="flex items-center justify-start max-w-[80vw] space-x-4 md:max-w-[55vw] lg:max-w-[100vw]">
-    <span className="w-48 text-white">
-      Minimum gap before booking (minutes):
-    </span>
+        <div className="flex items-center justify-start max-w-[80vw] space-x-4 md:max-w-[55vw] lg:max-w-[100vw]">
+          <span className="w-48 text-white">
+            Minimum gap before booking (minutes):
+          </span>
 
-    <Input
-      type="number"
-      {...register("timeGap", {
-        valueAsNumber: true,
-      })}
-      className="w-32 text-white"
-    />
-  </div>
+          <Input
+            type="number"
+            {...register("timeGap", {
+              valueAsNumber: true,
+            })}
+            className="w-32 text-white"
+          />
+        </div>
 
-  {/* Add this div to ensure consistent space for the error message */}
-  <div className="h-5 flex justify-center lg:justify-start">
-    {errors.timeGap && (
-      <span className="text-red-500 text-sm">
-        {`${errors.timeGap.message} this is time gape`}
-      </span>
-    )}
-  </div>
-</div>
+        {/* Add this div to ensure consistent space for the error message */}
+        <div className="h-5 flex justify-center lg:justify-start">
+          {errors.timeGap && (
+            <span className="text-red-500 text-sm">
+              {`${errors.timeGap.message} this is time gape`}
+            </span>
+          )}
+        </div>
+      </div>
 
-      {error && <div className="text-red-500 text-sm">{`${error?.message}`}</div>}
+      {error && (
+        <div className="text-red-500 text-sm">{`${error?.message}`}</div>
+      )}
       <div className="flex justify-center items-center lg:justify-start lg:max-w-[100vw]">
         <Button
           className="bg-purple-600 hover:bg-purple-800"

@@ -6,7 +6,7 @@ import { BarLoader } from "react-spinners";
 export default function EventsPage() {
   return (
     <Suspense
-      fallback={<BarLoader className="mt-4" width={"100%"} color="#A020F0" />}
+      fallback={<BarLoader className="pt-4" width={"100%"} color="#A020F0" />}
     >
       <Events />
     </Suspense>
