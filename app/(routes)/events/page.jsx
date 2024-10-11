@@ -1,8 +1,6 @@
 import { Suspense } from "react";
 import { getUserEvents } from "../../../actions/events";
 import EventCard from "../../../components/EventCard";
-
-import { BarLoader } from "react-spinners";
 export default function EventsPage() {
   return (
     <Suspense fallback={<div className="text-white text-center lg:text-start">Loading Upcoming meetings.......</div>}>
