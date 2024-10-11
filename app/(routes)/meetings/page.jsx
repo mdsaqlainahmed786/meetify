@@ -14,13 +14,22 @@ export default function Meetings() {
       <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-purple-400 text-center pt-5 lg:text-6xl lg:text-left">
         Meetings
       </h1>
-      <Tabs className="flex flex-col justify-center items-center lg:justify-start lg:items-start" defaultValue="upcoming">
+      <Tabs
+        className="flex flex-col justify-center items-center lg:justify-start lg:items-start"
+        defaultValue="upcoming"
+      >
         <TabsList className="bg-[#1F1F1F] mb-10">
           <TabsTrigger value="upcoming">Upcoming</TabsTrigger>
           <TabsTrigger value="past">Past</TabsTrigger>
         </TabsList>
         <TabsContent value="upcoming">
-          <Suspense fallback={<div className="text-white text-center lg:text-start">Loading Upcoming meetings.......</div>}>
+          <Suspense
+            fallback={
+              <div className="text-white text-center lg:text-start">
+                Loading Upcoming meetings.......
+              </div>
+            }
+          >
             <UpcomingMeetings />
           </Suspense>
         </TabsContent>

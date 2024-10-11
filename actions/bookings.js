@@ -1,9 +1,12 @@
-"use server"
+"use server";
 import { db } from "../lib/prisma";
 import { auth, clerkClient } from "@clerk/nextjs/server";
 import { google } from "googleapis";
 export async function createBooking(bookingData) {
-  console.log("FREAKING BOOKING AND MUST HAVE EVENTid>>>>>>>>>>>>>",bookingData); 
+  console.log(
+    "FREAKING BOOKING AND MUST HAVE EVENTid>>>>>>>>>>>>>",
+    bookingData,
+  );
   try {
     const event = await db.event.findUnique({
       where: {
@@ -19,7 +22,7 @@ export async function createBooking(bookingData) {
 
     const { data } = await clerkClient.users.getUserOauthAccessToken(
       event.user.clerkUserId,
-      "oauth_google"
+      "oauth_google",
     );
     const token = data[0]?.token;
     if (!token) {
@@ -43,14 +46,14 @@ export async function createBooking(bookingData) {
           dateTime: bookingData.endTime,
         },
         attendees: [{ email: bookingData.email }, { email: event.user.email }],
-        conferenceData:{
-          createRequest:{requestId:`${event.id}-${Date.now()}`}
-        }
+        conferenceData: {
+          createRequest: { requestId: `${event.id}-${Date.now()}` },
+        },
       },
     });
     const meetLink = meetLinkResponse.data.hangoutLink;
     const googleEventId = meetLinkResponse.data.id;
-      
+
     const booking = await db.booking.create({
       data: {
         eventId: event.id,

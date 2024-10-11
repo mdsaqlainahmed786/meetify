@@ -57,7 +57,7 @@ export default function Dashboard() {
         style: {
           border: "1px solid black",
           padding: "16px",
-          backgroundColor:"#1F1F1F",
+          backgroundColor: "#1F1F1F",
           color: "white",
           marginTop: "75px",
         },
@@ -68,10 +68,10 @@ export default function Dashboard() {
       });
     } catch (err) {
       toast.error(err.message || "Failed to update username", {
-       style: {
+        style: {
           border: "1px solid black",
           padding: "16px",
-          backgroundColor:"#1F1F1F",
+          backgroundColor: "#1F1F1F",
           color: "white",
           marginTop: "75px",
         },
@@ -90,7 +90,9 @@ export default function Dashboard() {
       </h1>
       <Card className="bg-[#1F1F1F] border-2 border-purple-600 mx-4 lg:mx-0">
         <CardHeader>
-          <CardTitle className="text-white">Welcome, {user?.firstName}!</CardTitle>
+          <CardTitle className="text-white">
+            Welcome, {user?.firstName}!
+          </CardTitle>
         </CardHeader>
         {/* user meetings */}
       </Card>

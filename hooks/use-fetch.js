@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { useState } from "react";
 const useFetch = (cb) => {
   const [data, setData] = useState(undefined);
   const [loading, setLoading] = useState(null);
@@ -13,7 +13,7 @@ const useFetch = (cb) => {
       setError(null);
     } catch (err) {
       setError(err);
-    }finally{
+    } finally {
       setLoading(false);
     }
   };

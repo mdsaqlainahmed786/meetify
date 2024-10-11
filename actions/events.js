@@ -131,8 +131,8 @@ export async function getEventAvailability(eventId) {
       },
     },
   });
- // console.log("Event:", event);
- // console.log("User availability:", event?.user?.availability);
+  // console.log("Event:", event);
+  // console.log("User availability:", event?.user?.availability);
   if (!event || !event.user.availability) {
     return [];
   }
@@ -144,23 +144,23 @@ export async function getEventAvailability(eventId) {
   const availableDates = [];
 
   for (let date = startDate; date <= endDate; date = addDays(date, 1)) {
-   // console.log("Current date:", date);
+    // console.log("Current date:", date);
     const dayOfWeek = format(date, "EEEE").toUpperCase();
-   // console.log("Day of week:", dayOfWeek);
+    // console.log("Day of week:", dayOfWeek);
     const dayAvailability = availability?.days?.find(
-      (d) => d.day === dayOfWeek
+      (d) => d.day === dayOfWeek,
     );
-  //  console.log("Day of availability:", dayAvailability);
+    //  console.log("Day of availability:", dayAvailability);
     if (dayAvailability) {
       const dateStr = format(date, "yyyy-MM-dd");
-    //  console.log("Date string:", dateStr);
+      //  console.log("Date string:", dateStr);
       const slots = generateAvailableTimeSlots(
         dayAvailability.startTime,
         dayAvailability.endTime,
         event.duration,
         bookings,
         dateStr,
-        availability.timeGap
+        availability.timeGap,
       );
       const startTimes = slots.filter((_, index) => index % 2 === 0);
       availableDates.push({
@@ -180,14 +180,14 @@ function generateAvailableTimeSlots(
   duration,
   bookings,
   dateStr,
-  timeGap = 0
+  timeGap = 0,
 ) {
   const slots = [];
   let currentTime = parseISO(
-    `${dateStr}T${startTime.toISOString().slice(11, 16)}`
+    `${dateStr}T${startTime.toISOString().slice(11, 16)}`,
   );
   const slotEndTime = parseISO(
-    `${dateStr}T${endTime.toISOString().slice(11, 16)}`
+    `${dateStr}T${endTime.toISOString().slice(11, 16)}`,
   );
 
   // If the date is today, start from the next available slot after the current time

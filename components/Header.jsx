@@ -34,9 +34,9 @@ async function Header() {
               </Button>
             </SignInButton>
           </SignedOut>
-         <SignedIn>
-          <UserMenu/>
-         </SignedIn>
+          <SignedIn>
+            <UserMenu />
+          </SignedIn>
         </div>
       </div>
     </div>

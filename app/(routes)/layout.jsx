@@ -36,7 +36,7 @@ const AppLayout = ({ children }) => {
                       pathname === item.href ? "text-purple-600" : "text-white"
                     }`}
                   >
-                    <span className="w-5 h-5 mr-3" >{item.icon}</span>
+                    <span className="w-5 h-5 mr-3">{item.icon}</span>
                     {item.label}
                   </Link>
                 </li>
@@ -61,7 +61,7 @@ const AppLayout = ({ children }) => {
                     pathname === item.href ? "text-purple-600" : "text-white"
                   }`}
                 >
-                  <span className="w-6 h-6" >{item.icon}</span>
+                  <span className="w-6 h-6">{item.icon}</span>
                   <span className="text-xs">{item.label}</span>
                 </Link>
               </li>
@@ -73,4 +73,4 @@ const AppLayout = ({ children }) => {
   );
 };
 
-export default AppLayout;
+export default AppLayout;
