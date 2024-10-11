@@ -43,7 +43,9 @@ const MeetingList = ({ meetings, type }) => {
               <CardContent>
                 <div className="flex items-center mb-2 text-white">
                   <CiCalendar className="mr-2 h-4 w-4 text-white" />
-                  <span>{format(new Date(meet.startTime), "MMMM d, yyyy")}</span>
+                  <span>
+                    {format(new Date(meet.startTime), "MMMM d, yyyy")}
+                  </span>
                 </div>
                 <div className="flex items-center mb-2 text-white">
                   <CiClock1 className="mr-2 h-4 w-4 text-white" />

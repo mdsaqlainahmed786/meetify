@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
             <p>Made by MD Saqlian Ahmed</p>
           </div>
         </footer> */}
-        {/* <div className="pt-">
+          {/* <div className="pt-">
           <FooterComp />
         </div> */}
           <EventDropdown />

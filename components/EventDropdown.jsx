@@ -32,13 +32,12 @@ export default function EventDropdown() {
     setIsOpen(false);
     if (SearchParams.get("create") === "true") {
       router.replace(window?.location.pathname);
-     
     }
   };
 
   return (
     <Drawer open={isOpen} handleOpen={handleOpen}>
-           {/* <Toaster position="top-right" reverseOrder={false} /> */}
+      {/* <Toaster position="top-right" reverseOrder={false} /> */}
       <DrawerContent className="bg-[#1F1F1F] border-[#1F1F1F] border-t-purple-600">
         <DrawerHeader>
           <DrawerTitle className="text-white">Create New Event</DrawerTitle>
@@ -51,7 +50,11 @@ export default function EventDropdown() {
         </DrawerHeader>
         <DrawerFooter>
           <DrawerClose asChild>
-            <Button variant="outline" className="bg-[#1F1F1F] border-2 text-white border-purple-600 hover:bg-[#1F1F1F] hover:text-white" onClick={handleOpen}>
+            <Button
+              variant="outline"
+              className="bg-[#1F1F1F] border-2 text-white border-purple-600 hover:bg-[#1F1F1F] hover:text-white"
+              onClick={handleOpen}
+            >
               Cancel
             </Button>
           </DrawerClose>

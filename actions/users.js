@@ -31,29 +31,29 @@ export async function getUserUsername(username) {
       username,
     },
     select: {
-        id: true,
-        name: true,
-        email: true,
-        imageUrl: true,
-        events: {
-          where: {
-            isPrivate: false,
-          },
-          orderBy: {
-            createdAt: "desc",
-          },
-          select: {
-            id: true,
-            title: true,
-            description: true,
-            duration: true,
-            isPrivate: true,
-            _count: {
-              select: { bookings: true },
-            },
+      id: true,
+      name: true,
+      email: true,
+      imageUrl: true,
+      events: {
+        where: {
+          isPrivate: false,
+        },
+        orderBy: {
+          createdAt: "desc",
+        },
+        select: {
+          id: true,
+          title: true,
+          description: true,
+          duration: true,
+          isPrivate: true,
+          _count: {
+            select: { bookings: true },
           },
         },
       },
+    },
   });
-    return user;
+  return user;
 }

@@ -3,7 +3,13 @@ import { getUserEvents } from "../../../actions/events";
 import EventCard from "../../../components/EventCard";
 export default function EventsPage() {
   return (
-    <Suspense fallback={<div className="text-white text-center lg:text-start">Loading Upcoming meetings.......</div>}>
+    <Suspense
+      fallback={
+        <div className="text-white text-center lg:text-start">
+          Loading Upcoming meetings.......
+        </div>
+      }
+    >
       <Events />
     </Suspense>
   );
@@ -21,7 +27,9 @@ async function Events() {
         Events
       </h1>
       {events.length === 0 && (
-        <p className="text-white text-start">You have not created any events yet.</p>
+        <p className="text-white text-start">
+          You have not created any events yet.
+        </p>
       )}
       {/* <p>You have not created any events yet.</p> */}
       <div className="pb-11 grid gap-8 grid-cols-1 lg:grid-cols-2 mx-auto max-w-[90vw]">

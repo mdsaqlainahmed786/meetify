@@ -43,7 +43,7 @@ const BookingForm = ({ event, availability }) => {
       return;
     }
     const startTime = new Date(
-      `${format(selectedDate, "yyyy-MM-dd")}T${selectedTime}`
+      `${format(selectedDate, "yyyy-MM-dd")}T${selectedTime}`,
     );
     const endTime = new Date(startTime.getTime() + event.duration * 60000);
     //console.log("EVENT ID", event.id);
@@ -63,7 +63,7 @@ const BookingForm = ({ event, availability }) => {
   // console.log("availability days", availability);
   const timeSlots = selectedDate
     ? availability.find(
-        (day) => day.date === format(selectedDate, "yyyy-MM-dd")
+        (day) => day.date === format(selectedDate, "yyyy-MM-dd"),
       )?.slots || []
     : [];
   if (data) {
@@ -119,24 +119,28 @@ const BookingForm = ({ event, availability }) => {
                 Available Time slots
               </h3>
               <div className="grid grid-cols-2 lg:grid-cols-3 gap-2">
-                {timeSlots.length === 0
-                  ? (<p className="flex justify-center text-center">No available slots</p>)
-                  : timeSlots.map((slot) => {
-                      return (
-                        <Button
-                          key={slot}
-                          onClick={() => setSelectedTime(slot)}
-                          className={`${
-                            selectedTime === slot
-                              ? "bg-purple-600 hover:bg-purple-600"
-                              : "border-2 border-purple-600 hover:bg-purple-800"
-                          }`}
-                          variant={selectedTime === slot ? "default" : ""}
-                        >
-                          {slot}
-                        </Button>
-                      );
-                    })}
+                {timeSlots.length === 0 ? (
+                  <p className="flex justify-center text-center">
+                    No available slots
+                  </p>
+                ) : (
+                  timeSlots.map((slot) => {
+                    return (
+                      <Button
+                        key={slot}
+                        onClick={() => setSelectedTime(slot)}
+                        className={`${
+                          selectedTime === slot
+                            ? "bg-purple-600 hover:bg-purple-600"
+                            : "border-2 border-purple-600 hover:bg-purple-800"
+                        }`}
+                        variant={selectedTime === slot ? "default" : ""}
+                      >
+                        {slot}
+                      </Button>
+                    );
+                  })
+                )}
               </div>
             </div>
           )}
@@ -144,29 +148,35 @@ const BookingForm = ({ event, availability }) => {
       </div>
       {selectedTime && (
         <form className="space-y-4 pb-5" onSubmit={handleSubmit(onSubmit)}>
-        <h3 className="text-lg text-center pb-3 font-semibold ">Enter Details of meeting</h3>
+          <h3 className="text-lg text-center pb-3 font-semibold ">
+            Enter Details of meeting
+          </h3>
           {/* <div className="pb-10"> */}
-            <div className="">
-              <Input {...register("name")} placeholder=" your Name" />
-              {error?.name && (
-                <p className="text-red-500 text-sm">{error.name.message}</p>
-              )}
-            </div>
-            <div>
-              <Input {...register("email")} placeholder=" your Email" />
-              {error?.email && (
-                <p className="text-red-500 text-sm">{error.email.message}</p>
-              )}
-            </div>
-            <div>
-              <Textarea
-                {...register("additionalInfo")}
-                placeholder="Additional Information"
-              />
-            </div>
-            <Button type="submit" disabled={loading} className="w-full bg-purple-600 hover:bg-purple-800">
-              {loading ? "Scheduling..." : "Schedule Event"}
-            </Button>
+          <div className="">
+            <Input {...register("name")} placeholder=" your Name" />
+            {error?.name && (
+              <p className="text-red-500 text-sm">{error.name.message}</p>
+            )}
+          </div>
+          <div>
+            <Input {...register("email")} placeholder=" your Email" />
+            {error?.email && (
+              <p className="text-red-500 text-sm">{error.email.message}</p>
+            )}
+          </div>
+          <div>
+            <Textarea
+              {...register("additionalInfo")}
+              placeholder="Additional Information"
+            />
+          </div>
+          <Button
+            type="submit"
+            disabled={loading}
+            className="w-full bg-purple-600 hover:bg-purple-800"
+          >
+            {loading ? "Scheduling..." : "Schedule Event"}
+          </Button>
           {/* </div> */}
         </form>
       )}
