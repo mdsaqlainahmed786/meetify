@@ -8,8 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "postinstall": "prisma generate",
-    "lint:check": "eslint --max-warnings 0 --config .eslintrc .",
-    "lint:fix": "eslint --max-warnings 0 --config .eslintrc . --fix",
+    "lint:check": "eslint --max-warnings 0 .",
+    "lint:fix": "eslint --max-warnings 0 . --fix",
     "format:fix": "prettier --write \"**/*.{js,jsx,json}\"",
     "format:check": "prettier --check \"**/*.{js,jsx,json}\""
   },
