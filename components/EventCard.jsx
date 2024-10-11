@@ -19,7 +19,8 @@ import { useRouter } from "next/navigation";
 const EventCard = ({ event, username, isPublic = false }) => {
   const [isCopied, setIsCopied] = useState(false);
   const router = useRouter();
-  const handleCopy = async () => {
+  const handleCopy = async (e) => {
+    e.stopPropagation();
     try {
       await navigator.clipboard.writeText(
         `${window.location.origin}/${username}/${event.id}`
@@ -33,14 +34,16 @@ const EventCard = ({ event, username, isPublic = false }) => {
     }
   };
   const {loading, error, fn: fnDeleteEvent} = useFetch(deleteEvent);
-  const onDelete = async () => {
+  const onDelete = async (e) => {
+    e.stopPropagation();
     if(window.confirm("Are you sure you want to delete this event?")){
       await fnDeleteEvent(event.id)
     }
     if (!loading && !error) router.push('/events');
   }
   const handleCardClick = (e)=>{
-    if(e.target.tagName !== "BUTTON" && e.target.tagName!=="SVG") {
+    if(e.target.tagName !== "BUTTON" ||
+      e.target.tagName !== "SVG") {
       window?.open(`${window?.location.origin}/${username}/${event.id}`, "_blank");
     };
   }
@@ -68,12 +71,12 @@ const EventCard = ({ event, username, isPublic = false }) => {
             <span>{isCopied ? "Copied!" : "Copy Link"}</span>
           </Button>
           {/* </Link> */}
-          <Link href="/">
-            <Button  className="border-2 border-purple-600 " onClick={onDelete} disabled={loading}>
+          {/* <Link href="/"> */}
+            <Button  className="border-2 border-purple-600" onClick={onDelete} disabled={loading}>
               <MdOutlineDelete className="text-lg mr-2" />
               <span>{loading?"Deleting":"Delete"}</span>
             </Button>
-          </Link>
+          {/* </Link> */}
         </CardFooter>
       )}
     </Card>

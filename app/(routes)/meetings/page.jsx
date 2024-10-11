@@ -20,7 +20,7 @@ export default function Meetings() {
           <TabsTrigger value="past">Past</TabsTrigger>
         </TabsList>
         <TabsContent value="upcoming">
-          <Suspense fallback={<div>Loading Upcoming meetings.......</div>}>
+          <Suspense fallback={<div className="text-white text-center lg:text-start">Loading Upcoming meetings.......</div>}>
             <UpcomingMeetings />
           </Suspense>
         </TabsContent>
