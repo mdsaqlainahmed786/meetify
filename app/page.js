@@ -26,30 +26,6 @@ export default function Home() {
     });
   }, []);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
   const howItWorks = [
     {
       step: "Sign Up",
@@ -88,7 +64,7 @@ export default function Home() {
   return (
     <div className="pb-16">
       <div
-       data-aos="fade-right"
+        data-aos="fade-right"
         className="flex justify-between items-center w-full pt-32 mx-auto max-w-[90vw]"
       >
         <div className="flex justify-start flex-col space-y-5 lg:w-[50%]">
@@ -114,9 +90,7 @@ export default function Home() {
       <p className="text-3xl pt-44 pb-16 text-center font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-purple-400">
         Key Features
       </p>
-      <div
-        className="flex flex-col w-full justify-center mx-auto max-w-[80vw] md:mx-auto md:max-w-[90vw] text-center md:flex-row md:space-y-0 md:space-x-8 space-y-8"
-      >
+      <div className="flex flex-col w-full justify-center mx-auto max-w-[80vw] md:mx-auto md:max-w-[90vw] text-center md:flex-row md:space-y-0 md:space-x-8 space-y-8">
         {Features.map((feature, index) => (
           <Card
             className="shadow-md bg-[#1F1F1F] border-2 border-purple-500"
