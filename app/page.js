@@ -25,6 +25,15 @@ export default function Home() {
       once: false, // Animation only occurs once
     });
   }, []);
+
+
+
+
+
+
+
+
+  
   const howItWorks = [
     {
       step: "Sign Up",
