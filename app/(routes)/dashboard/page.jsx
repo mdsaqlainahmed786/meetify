@@ -52,7 +52,7 @@ export default function Dashboard() {
 
   const onSubmit = async (data) => {
     try {
-      const result = await fnupdateUsername(data.username);
+      await fnupdateUsername(data.username);
       toast.success("Username updated successfully", {
         style: {
           border: "1px solid black",
