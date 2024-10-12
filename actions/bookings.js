@@ -7,7 +7,7 @@ const limiter = new Ratelimit({
   namespace: "createBooking",
   limit: 3,
   duration: "24h",
-  rootKey: process.env.UNKEY_ROOT_KEY
+  rootKey: process.env.UNKEY_ROOT_KEY,
 });
 export async function createBooking(bookingData) {
   const { userId } = auth();
@@ -22,9 +22,9 @@ export async function createBooking(bookingData) {
   console.log("User ID for rate limiting:", user.clerkUserId);
   const ratelimit = await limiter.limit(user.clerkUserId);
 
-  if (!ratelimit.success){
+  if (!ratelimit.success) {
     console.log("Rate limit exceeded");
-   return { success: false, message: "Rate limit exceeded", };
+    return { success: false, message: "Rate limit exceeded" };
   }
   try {
     const event = await db.event.findUnique({

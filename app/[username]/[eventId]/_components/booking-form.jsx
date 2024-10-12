@@ -43,7 +43,7 @@ const BookingForm = ({ event, availability }) => {
         return;
       }
       const startTime = new Date(
-        `${format(selectedDate, "yyyy-MM-dd")}T${selectedTime}`
+        `${format(selectedDate, "yyyy-MM-dd")}T${selectedTime}`,
       );
       const endTime = new Date(startTime.getTime() + event.duration * 60000);
       //console.log("EVENT ID", event.id);
@@ -73,13 +73,15 @@ const BookingForm = ({ event, availability }) => {
   // console.log("availability days", availability);
   const timeSlots = selectedDate
     ? availability.find(
-        (day) => day.date === format(selectedDate, "yyyy-MM-dd")
+        (day) => day.date === format(selectedDate, "yyyy-MM-dd"),
       )?.slots || []
     : [];
   if (data) {
     return (
       <div className="text-center p-10 bg-[#1F1F1F] text-white border-2 border-purple-600">
-        <h2 className="text-2xl font-bold mb-4">{data.meetLink ? "Booking Successful":"Booking Unsuccessful"}</h2>
+        <h2 className="text-2xl font-bold mb-4">
+          {data.meetLink ? "Booking Successful" : "Booking Unsuccessful"}
+        </h2>
         {data.meetLink ? (
           <p>
             Join the meeting:{" "}
