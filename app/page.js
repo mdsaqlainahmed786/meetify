@@ -9,6 +9,8 @@ import { CiCalendar } from "react-icons/ci";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
+import { FaGithubSquare } from "react-icons/fa";import EventDropdown from "../components/EventDropdown";
+import { FaLinkedin } from "react-icons/fa";
 import {
   Card,
   CardDescription,
@@ -62,7 +64,7 @@ export default function Home() {
     },
   ];
   return (
-    <div className="pb-16">
+    <div className="">
       <div
         data-aos="fade-right"
         className="flex justify-between items-center w-full pt-32 mx-auto max-w-[90vw]"
@@ -157,6 +159,19 @@ export default function Home() {
           Start here
         </Button>
       </div>
+      <footer className="bg-[#1F1F1F] text-white mt-10 w-full py-12">
+            <div className="container space-y-5 flex flex-col justify-center items-center mx-auto text-center text-white">
+              <p>Designed and Developed by MD Saqlain Ahmed</p>
+              <div className="flex space-x-2">
+                <Link href="https://github.com/mdsaqlainahmed786" target="_blank">
+                  <FaGithubSquare className="text-3xl cursor-pointer" />
+                </Link>
+                <Link href="https://www.linkedin.com/in/moahmmed-saqlain-ahmed-b7720130a/" target="_blank">
+                  <FaLinkedin className="text-3xl cursor-pointer" />
+                </Link>
+              </div>
+            </div>
+          </footer>
     </div>
   );
 }

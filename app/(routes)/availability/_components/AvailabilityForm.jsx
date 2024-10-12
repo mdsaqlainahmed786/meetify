@@ -45,7 +45,8 @@ function AvailabilityForm({ initialData }) {
         style: {
           border: "1px solid black",
           padding: "16px",
-          color: "black",
+          backgroundColor: "#1F1F1F",
+          color: "white",
           marginTop: "75px",
         },
         iconTheme: {
