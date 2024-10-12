@@ -14,6 +14,7 @@ import { Input } from "../../../../components/ui/input";
 import useFetch from "../../../../hooks/use-fetch";
 const BookingForm = ({ event, availability }) => {
   const [selectedDate, setSelectedDate] = useState(null);
+  const [message, setMessage] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
   const {
     register,
@@ -36,28 +37,37 @@ const BookingForm = ({ event, availability }) => {
   const { loading, data, fn: fnCreateBooking } = useFetch(createBooking);
 
   const onSubmit = async (data) => {
+    try {
+      if (!selectedDate || !selectedTime) {
+        console.error("Please select a date and time");
+        return;
+      }
+      const startTime = new Date(
+        `${format(selectedDate, "yyyy-MM-dd")}T${selectedTime}`,
+      );
+      const endTime = new Date(startTime.getTime() + event.duration * 60000);
+      //console.log("EVENT ID", event.id);
+      const bookingData = {
+        eventId: event.id,
+        name: data.name,
+        email: data.email,
+        startTime: startTime.toISOString(),
+        endTime: endTime.toISOString(),
+        additonalInfo: data.additionalInfo,
+      };
+
+      const response = await fnCreateBooking(bookingData);
+      console.log("response", response);
+      if (response.success) {
+        setMessage("Booking successful!");
+      } else {
+        setMessage("Booking failed");
+      }
+    } catch (e) {
+      console.log("Error", e);
+    }
     // console.log("form data submitted:", data);
     // await fetchAvailability(data);
-    if (!selectedDate || !selectedTime) {
-      console.error("Please select a date and time");
-      return;
-    }
-    const startTime = new Date(
-      `${format(selectedDate, "yyyy-MM-dd")}T${selectedTime}`,
-    );
-    const endTime = new Date(startTime.getTime() + event.duration * 60000);
-    //console.log("EVENT ID", event.id);
-    const bookingData = {
-      eventId: event.id,
-      name: data.name,
-      email: data.email,
-      startTime: startTime.toISOString(),
-      endTime: endTime.toISOString(),
-      additonalInfo: data.additionalInfo,
-    };
-
-    await fnCreateBooking(bookingData);
-    console.log("data", data);
   };
   const availableDays = availability.map((day) => new Date(day.date));
   // console.log("availability days", availability);
@@ -69,8 +79,10 @@ const BookingForm = ({ event, availability }) => {
   if (data) {
     return (
       <div className="text-center p-10 bg-[#1F1F1F] text-white border-2 border-purple-600">
-        <h2 className="text-2xl font-bold mb-4">Booking successful!</h2>
-        {data.meetLink && (
+        <h2 className="text-2xl font-bold mb-4">
+          {data.meetLink ? "Booking Successful" : "Booking Unsuccessful"}
+        </h2>
+        {data.meetLink ? (
           <p>
             Join the meeting:{" "}
             <a
@@ -81,6 +93,11 @@ const BookingForm = ({ event, availability }) => {
             >
               {data.meetLink}
             </a>
+          </p>
+        ) : (
+          <p>
+            Oops!, something went wrong or may be you exceeded the Bookings
+            limit only 3 per day{" "}
           </p>
         )}
       </div>

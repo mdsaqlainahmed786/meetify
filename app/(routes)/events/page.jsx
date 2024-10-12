@@ -3,15 +3,22 @@ import { getUserEvents } from "../../../actions/events";
 import EventCard from "../../../components/EventCard";
 export default function EventsPage() {
   return (
-    <Suspense
-      fallback={
-        <div className="text-white text-center lg:text-start">
-          Loading Upcoming meetings.......
-        </div>
-      }
-    >
-      <Events />
-    </Suspense>
+    <>
+      <div className="w-full space-y-5 lg:w-[80%] lg:p-5">
+        <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-purple-400 text-center pt-5 lg:text-6xl lg:text-left">
+          Events
+        </h1>
+        <Suspense
+          fallback={
+            <div className="text-white text-center lg:text-start">
+              Loading Events...
+            </div>
+          }
+        >
+          <Events />
+        </Suspense>
+      </div>
+    </>
   );
 }
 
@@ -22,10 +29,7 @@ async function Events() {
   // }
   //  console.log("events",events, "username", username)
   return (
-    <div className="w-full space-y-5 lg:w-[80%] lg:p-5">
-      <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-purple-400 text-center pt-5 lg:text-6xl lg:text-left">
-        Events
-      </h1>
+    <>
       {events.length === 0 && (
         <p className="text-white text-start">
           You have not created any events yet.
@@ -37,6 +41,6 @@ async function Events() {
           <EventCard key={event.id} event={event} username={username} />
         ))}
       </div>
-    </div>
+    </>
   );
 }

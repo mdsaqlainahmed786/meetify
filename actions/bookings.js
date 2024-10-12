@@ -2,11 +2,30 @@
 import { db } from "../lib/prisma";
 import { auth, clerkClient } from "@clerk/nextjs/server";
 import { google } from "googleapis";
+import { Ratelimit } from "@unkey/ratelimit";
+const limiter = new Ratelimit({
+  namespace: "createBooking",
+  limit: 3,
+  duration: "24h",
+  rootKey: process.env.UNKEY_ROOT_KEY,
+});
 export async function createBooking(bookingData) {
-  console.log(
-    "FREAKING BOOKING AND MUST HAVE EVENTid>>>>>>>>>>>>>",
-    bookingData,
-  );
+  const { userId } = auth();
+
+  if (!userId) {
+    throw new Error("Unauthorized");
+  }
+
+  const user = await db.user.findUnique({
+    where: { clerkUserId: userId },
+  });
+  console.log("User ID for rate limiting:", user.clerkUserId);
+  const ratelimit = await limiter.limit(user.clerkUserId);
+
+  if (!ratelimit.success) {
+    console.log("Rate limit exceeded");
+    return { success: false, message: "Rate limit exceeded" };
+  }
   try {
     const event = await db.event.findUnique({
       where: {
