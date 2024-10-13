@@ -162,7 +162,8 @@ export default function Home() {
       </div>
       <footer className="bg-[#1F1F1F] text-white mt-10 w-full py-12">
         <div className="container space-y-5 flex flex-col justify-center items-center mx-auto text-center text-white">
-          <p>Designed and Developed by MD Saqlain Ahmed</p>
+          <p className="text-xl">Designed and Developed By</p>
+          <span className="text-lg"> Mohammed Saqlain Ahmed</span>
           <div className="flex space-x-2">
             <Link href="https://github.com/mdsaqlainahmed786" target="_blank">
               <FaGithubSquare className="text-3xl cursor-pointer" />
